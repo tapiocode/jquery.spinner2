@@ -3,10 +3,8 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    loc: {
-      dev: 'dev',
-      prod: 'dist'
-    },
+    devDir: 'dev',    // Development files
+    distDir: 'dist',  // Distribution files
     pkg: grunt.file.readJSON('package.json'),
     connect: {
       // By default, opens a server on http://localhost:8000
@@ -15,11 +13,9 @@ module.exports = function(grunt) {
     compass: {
       dist: {
         options: {
-          sassDir: '<%= loc.dev %>',
-          cssDir: '<%= loc.prod %>',
-          imagesDir: '<%= loc.dev %>',
-          httpImagesPath: '<%= loc.prod %>',
-          httpGeneratedImagesPath: '/<%= loc.prod %>',
+          sassDir: '<%= devDir %>',
+          cssDir: '<%= devDir %>',
+          imagesDir: '<%= devDir %>',
           outputStyle: 'compressed',
           force: true
         }
@@ -30,14 +26,29 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc'
       },
       dev: {
-        src: [ '<%= loc.dev %>/<%= pkg.name %>.js' ]
+        src: ['<%= devDir %>/<%= pkg.name %>.js']
       }
     },
     uglify: {
       dist: {
         files: {
-          '<%= loc.prod %>/<%= pkg.name %>.min.js': '<%= loc.dev %>/<%= pkg.name %>.js'
+          '<%= distDir %>/<%= pkg.name %>.min.js': '<%= devDir %>/<%= pkg.name %>.js'
         }
+      }
+    },
+    cssmin: {
+      dist: {
+        files: {
+          '<%= distDir %>/<%= pkg.name %>.min.css': '<%= devDir %>/<%= pkg.name %>.css'
+        }
+      }
+    },
+    copy: {
+      dist: {
+        expand: true,
+        cwd: '<%= devDir %>',
+        src: '*.png',
+        dest: '<%= distDir %>'
       }
     },
     watch: {
@@ -47,10 +58,13 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['**/*.scss'],
-        tasks: ['compass']
+        tasks: ['compass', 'cssmin']
       },
       js: {
-        files: ['<%= loc.dev %>/**.js'],
+        files: [
+          '<%= devDir %>/**.js',
+          '!<%= devDir %>/**.min.js'
+        ],
         tasks: ['jshint', 'uglify']
       },
       html: {
@@ -62,5 +76,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('default', ['connect', 'watch']);
+
+  grunt.registerTask('build', ['jshint', 'uglify', 'compass', 'cssmin', 'copy']);
 
 };

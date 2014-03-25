@@ -1,10 +1,12 @@
-!http://reaktor.github.com/jquery.spinner/site/spinner.png!
+!http://tapiocode.github.io/jquery.spinner2/site/spinner.png!
 
-h1. jquery.spinner
+h1. jquery.spinner2
 
 Component for selecting numbers by typing or clicking
 
-"Try out":http://reaktor.github.com/jquery.spinner/ 
+Original spinner can be seen here: "reaktor/jquery.spinner":http://github.com/reaktor/jquery.spinner
+
+"Give it a spin":http://tapiocode.github.io/jquery.spinner2/ 
 
 h1. Features
 
@@ -15,6 +17,13 @@ h1. Features
 * Trigger update event when value changes
 * Option for default and min value
 * Unobtrusive
+
+h1. Additional Features in Version 2
+
+* Support for high-density displays (retina)
+* Set initial value and step-size per tag using data-attributes
+* Uses Grunt
+* JS-files run through jshint
 
 h1. License
 

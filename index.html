@@ -1,24 +1,65 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+		"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Demo for spinner</title>
-    <link rel="stylesheet" href="dist/jquery.spinner.css" />
-    <style type="text/css">
-        body {margin: 20px;}
-        .spinnerExample {margin:10px 0;}
-    </style>
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<title>Demo for spinner 2</title>
+	<link rel="stylesheet" href="dist/jquery.spinner.min.css" />
+	<style type="text/css">
+		body {
+			margin: 20px;
+			font-family: Helvetica, arial, freesans, clean, sans-serif;
+		}
+		h1 {
+			font-size: 2em;
+			font-weight: bold;
+		}
+		pre, code {
+			font-family: monospace;
+		}
+		fieldset {
+			display: inline-block;
+			border: 1px solid #aaa;
+			margin: 20px;
+			vertical-align: top;
+		}
+		.spinner {
+			margin: 8px 16px;
+		}
+	</style>
 </head>
 <body>
+<h1>jQuery Spinner 2</h1>
+<pre><code>
+	Usage:
 
-<input type="text" class="spinnerExample" />
-<input type="text" class="spinnerExample" />
-<input type="text" class="spinnerExample" />
+	Tag(s):
+		&lt;input [class="myClass"] [data-step="1"] [data-initvalue="1"] />
+	
+	Script:
+		$(&lt;selector>).spinner(); // Eg. tag(s) above $('.myClass')
+
+	Optional data-attributes:
+
+		data-step="&lt;integer>"       -- Value of increment/decrement
+		data-initvalue="&lt;integer>"  -- Initial value
+
+</code></pre>
+<fieldset>
+	<legend>Step Size 1</legend>
+	<input class="spinnerExample" />
+	<input class="spinnerExample" data-initvalue="25" />
+</fieldset>
+<fieldset>
+	<legend>Step Size 5</legend>
+	<input class="spinnerExample" data-step="5" />
+	<input class="spinnerExample" data-initvalue="50" data-step="5" />
+</fieldset>
 
 <script type="text/javascript" src="lib/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="dist/jquery.spinner.min.js"></script>
 <script type="text/javascript">
-    $('.spinnerExample').spinner()
+	$('.spinnerExample').spinner()
 </script>
 </body>
 </html>

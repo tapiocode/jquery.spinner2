@@ -37,9 +37,9 @@
           }
         });
 
-      function changeValue(pStep) {
-        var step = $(this).data('step') || pStep;
-        textField.val(getValue() + step);
+      function changeValue(direction) {
+        var stepSize = textField.data('step') || 1;
+        textField.val(getValue() + stepSize * direction);
         validateAndTrigger(textField);
       }
 
@@ -82,22 +82,24 @@
         return parseInt(field.val() || 0, 10);
       }
 
-      function getButton(data) {
-        var positive = data.step > 0;
+      function getButton(direction) {
+        var positive = direction > 0;
         var classNames = [ 'stepper', (positive ? 'increase' : 'decrease') ];
         var button = $('<button>')
-          .data(data)
           .addClass(classNames.join(' '))
           .html(positive ? '+' : '-')
-          .click(changeValue);
+          .click(function() {
+            changeValue(positive ? 1 : -1);
+          });
         return button;
       }
 
       textField
         .wrap(container)
-        .before(getButton({ step: -1 }))
-        .after(getButton({ step: 1 }));
+        .before(getButton(-1))
+        .after(getButton(1));
 
+      textField.val(textField.data('initvalue') || 0);
       validate(textField);
 
     });

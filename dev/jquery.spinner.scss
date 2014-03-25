@@ -12,10 +12,9 @@
  * the License.
  */
 @import "compass/reset";
-@import "compass/css3/images";
 @import "compass/utilities/general/clearfix";
 @import "compass/css3/box-shadow";
-@import "spinner/*.png";
+@import "retina-sprites";
 
 @mixin light-shadow {
   @include box-shadow(0 3px 3px -4px #aaaaaa);
@@ -34,7 +33,7 @@
     float: left;
     height: 100%;
     line-height: 25px;
-    margin:0;
+    margin: 0;
   }
 
   button {
@@ -46,23 +45,23 @@
     outline: none;
   }
   .decrease {
-    @include spinner-sprite(minus);
+    @include use-sprite(minus);
     cursor: pointer;
     text-indent: -10000px;
     &[disabled] {
-      @include spinner-sprite(minusDisabled);
+      @include use-sprite(minusDisabled);
       cursor: default;
     }
   }
 
   .increase {
-    @include spinner-sprite(plus);
+    @include use-sprite(plus);
     cursor: pointer;
     text-indent: -10000px;
   }
 
   .value {
-    @include spinner-sprite(value);
+    @include use-sprite(value);
     width: 24px;
     height: 27px;
     border: none;
@@ -70,7 +69,7 @@
     color: #ffffff;
     padding: 0px;
     &.passive {
-      @include spinner-sprite(valuePassive);
+      @include use-sprite(valuePassive);
       color: #919191;
     }
   }
