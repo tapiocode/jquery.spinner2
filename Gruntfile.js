@@ -16,7 +16,7 @@ module.exports = function(grunt) {
           sassDir: '<%= devDir %>',
           cssDir: '<%= devDir %>',
           imagesDir: '<%= devDir %>',
-          outputStyle: 'compressed',
+          httpGeneratedImagesPath: '.',
           force: true
         }
       }

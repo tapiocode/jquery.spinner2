@@ -24,6 +24,7 @@ h1. Additional Features in Version 2
 * Set initial value and step-size per tag using data-attributes
 * Uses Grunt
 * JS-files run through jshint
+* Minified css, js for production
 
 h1. License
 
