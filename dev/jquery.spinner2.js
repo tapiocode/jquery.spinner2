@@ -29,10 +29,10 @@
         .bind('keyup paste change', function (e) {
           var field = $(this);
           if (e.keyCode === keyCodes.up) {
-            changeValue.call(this, 1);
+            changeValue(1);
           } else if (e.keyCode === keyCodes.down) {
-            changeValue.call(this, -1);
-          } else if (getValue(field) !== container.data('lastValidValue')) {
+            changeValue(-1);
+          } else if (getValue(field) !== container.data('lastValidValue')) {
             validateAndTrigger(field);
           }
         });
