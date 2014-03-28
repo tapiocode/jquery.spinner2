@@ -20,6 +20,16 @@
   @include box-shadow(0 3px 3px -4px #aaaaaa);
 }
 
+@mixin step-button($dir) {
+    @include use-sprite($dir);
+    cursor: pointer;
+    text-indent: -10000px;
+    &[disabled] {
+      @include use-sprite($dir + Disabled);
+      cursor: default;
+    }
+}
+
 .spinner {
   height: 25px;
   width: 71px;
@@ -44,20 +54,13 @@
     padding: 0;
     outline: none;
   }
-  .decrease {
-    @include use-sprite(minus);
-    cursor: pointer;
-    text-indent: -10000px;
-    &[disabled] {
-      @include use-sprite(minusDisabled);
-      cursor: default;
-    }
+  
+  .pos {
+    @include step-button('pos');
   }
 
-  .increase {
-    @include use-sprite(plus);
-    cursor: pointer;
-    text-indent: -10000px;
+  .neg{
+    @include step-button('neg');
   }
 
   .value {

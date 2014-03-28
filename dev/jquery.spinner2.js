@@ -13,19 +13,24 @@
  */
 ;(function ($) {
   
-  var defaults = { value: 0, min: 0 };
+  var defaults = {
+    step      : 1,
+    initvalue : 0,
+    minvalue  : 0,
+    maxvalue  : 100,
+    maxlength : 2
+  };
   var keyCodes = { up: 38, down: 40 };
 
   $.fn.spinner = function (opts) {
     return this.each(function () {
-      var options = $.extend(defaults, opts);
+      var options = $.extend({}, defaults, opts || {}, $(this).data() || {});
       var container = $('<div>')
         .addClass('spinner')
-        .data('lastValidValue', options.value);
+        .data('lastValidValue', options.initvalue);
       var textField = $(this)
         .addClass('value')
-        .attr('maxlength', '2')
-        .val(options.value)
+        .val(options.initvalue)
         .bind('keyup paste change', function (e) {
           var field = $(this);
           if (e.keyCode === keyCodes.up) {
@@ -38,8 +43,7 @@
         });
 
       function changeValue(direction) {
-        var stepSize = textField.data('step') || 1;
-        textField.val(getValue() + stepSize * direction);
+        textField.val(getValue() + options.step * direction);
         validateAndTrigger(textField);
       }
 
@@ -56,9 +60,11 @@
         var isInvalidValue = isInvalid(value);
         field
             .toggleClass('invalid', isInvalidValue)
-            .toggleClass('passive', value === 0)
-            .siblings('.decrease')
-            .attr('disabled', (value <= options.min ? 'disabled' : null));
+            .toggleClass('passive', !isInRange(value))
+            .siblings('.neg')
+            .attr('disabled', (value === options.minvalue ? 'disabled' : null ))
+            .siblings('.pos')
+            .attr('disabled', (value === options.maxvalue ? 'disabled' : null ));
 
         if (isInvalidValue) {
           var timeout = setTimeout(function () {
@@ -74,7 +80,11 @@
       }
 
       function isInvalid(value) {
-        return isNaN(+value) || value < options.min;
+        return isNaN(+value) || !isInRange(value);
+      }
+
+      function isInRange(value) {
+        return value >= options.minvalue && value <= options.maxvalue;
       }
 
       function getValue(field) {
@@ -84,7 +94,7 @@
 
       function getButton(direction) {
         var positive = direction > 0;
-        var classNames = [ 'stepper', (positive ? 'increase' : 'decrease') ];
+        var classNames = [ 'stepper', (positive ? 'pos' : 'neg') ];
         var button = $('<button>')
           .addClass(classNames.join(' '))
           .html(positive ? '+' : '-')
@@ -99,7 +109,8 @@
         .before(getButton(-1))
         .after(getButton(1));
 
-      textField.val(textField.data('initvalue') || 0);
+      textField.val(options.initvalue);
+      textField.attr('maxlength', options.maxlength);
       validate(textField);
 
     });

@@ -88,7 +88,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
  * 4. create sprite images for pixel ratio 2 screens and put them in the second folder, use the same filenames.
  * 5. use the sprite-image in your Sass/Scss using: '@include use-sprite(<sprite-name>)'
  */
-/* line 23, jquery.spinner2.scss */
+/* line 33, jquery.spinner2.scss */
 .spinner {
   height: 25px;
   width: 71px;
@@ -98,7 +98,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-shadow: 0 3px 3px -4px #aaaaaa;
   box-shadow: 0 3px 3px -4px #aaaaaa;
 }
-/* line 30, jquery.spinner2.scss */
+/* line 40, jquery.spinner2.scss */
 .spinner button,
 .spinner .value {
   text-align: center;
@@ -108,7 +108,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 25px;
   margin: 0;
 }
-/* line 39, jquery.spinner2.scss */
+/* line 49, jquery.spinner2.scss */
 .spinner button {
   border: none;
   width: 23px;
@@ -117,10 +117,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 0;
   outline: none;
 }
-/* line 47, jquery.spinner2.scss */
-.spinner .decrease {
-  background-image: url('spinner-sc5ac8e5cf1.png');
-  background-position: 0 -100px;
+/* line 58, jquery.spinner2.scss */
+.spinner .pos {
+  background-image: url('spinner-s5e63d110e3.png');
+  background-position: 0 -75px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -130,19 +130,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-indent: -10000px;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  /* line 47, jquery.spinner2.scss */
-  .spinner .decrease {
-    background-image: url('spinner-2x-s4bc983b14f.png');
-    background-size: 24px 125px;
-    background-position: 0 -100px;
+  /* line 58, jquery.spinner2.scss */
+  .spinner .pos {
+    background-image: url('spinner-2x-s8f8699dcbe.png');
+    background-size: 24px 150px;
+    background-position: 0 -75px;
     height: 25px;
     width: 23px;
   }
 }
-/* line 51, jquery.spinner2.scss */
-.spinner .decrease[disabled] {
-  background-image: url('spinner-sc5ac8e5cf1.png');
-  background-position: 0 -75px;
+/* line 27, jquery.spinner2.scss */
+.spinner .pos[disabled] {
+  background-image: url('spinner-s5e63d110e3.png');
+  background-position: 0 -50px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -151,19 +151,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   cursor: default;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  /* line 51, jquery.spinner2.scss */
-  .spinner .decrease[disabled] {
-    background-image: url('spinner-2x-s4bc983b14f.png');
-    background-size: 24px 125px;
-    background-position: 0 -75px;
+  /* line 27, jquery.spinner2.scss */
+  .spinner .pos[disabled] {
+    background-image: url('spinner-2x-s8f8699dcbe.png');
+    background-size: 24px 150px;
+    background-position: 0 -50px;
     height: 25px;
     width: 23px;
   }
 }
-/* line 57, jquery.spinner2.scss */
-.spinner .increase {
-  background-image: url('spinner-sc5ac8e5cf1.png');
-  background-position: 0 -50px;
+/* line 62, jquery.spinner2.scss */
+.spinner .neg {
+  background-image: url('spinner-s5e63d110e3.png');
+  background-position: 0 -125px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -173,18 +173,39 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-indent: -10000px;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  /* line 57, jquery.spinner2.scss */
-  .spinner .increase {
-    background-image: url('spinner-2x-s4bc983b14f.png');
-    background-size: 24px 125px;
-    background-position: 0 -50px;
+  /* line 62, jquery.spinner2.scss */
+  .spinner .neg {
+    background-image: url('spinner-2x-s8f8699dcbe.png');
+    background-size: 24px 150px;
+    background-position: 0 -125px;
     height: 25px;
     width: 23px;
   }
 }
-/* line 63, jquery.spinner2.scss */
+/* line 27, jquery.spinner2.scss */
+.spinner .neg[disabled] {
+  background-image: url('spinner-s5e63d110e3.png');
+  background-position: 0 -100px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  height: 25px;
+  width: 23px;
+  cursor: default;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
+  /* line 27, jquery.spinner2.scss */
+  .spinner .neg[disabled] {
+    background-image: url('spinner-2x-s8f8699dcbe.png');
+    background-size: 24px 150px;
+    background-position: 0 -100px;
+    height: 25px;
+    width: 23px;
+  }
+}
+/* line 66, jquery.spinner2.scss */
 .spinner .value {
-  background-image: url('spinner-sc5ac8e5cf1.png');
+  background-image: url('spinner-s5e63d110e3.png');
   background-position: 0 -25px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -199,18 +220,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 0px;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  /* line 63, jquery.spinner2.scss */
+  /* line 66, jquery.spinner2.scss */
   .spinner .value {
-    background-image: url('spinner-2x-s4bc983b14f.png');
-    background-size: 24px 125px;
+    background-image: url('spinner-2x-s8f8699dcbe.png');
+    background-size: 24px 150px;
     background-position: 0 -25px;
     height: 25px;
     width: 24px;
   }
 }
-/* line 71, jquery.spinner2.scss */
+/* line 74, jquery.spinner2.scss */
 .spinner .value.passive {
-  background-image: url('spinner-sc5ac8e5cf1.png');
+  background-image: url('spinner-s5e63d110e3.png');
   background-position: 0 0;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -220,16 +241,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   color: #919191;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  /* line 71, jquery.spinner2.scss */
+  /* line 74, jquery.spinner2.scss */
   .spinner .value.passive {
-    background-image: url('spinner-2x-s4bc983b14f.png');
-    background-size: 24px 125px;
+    background-image: url('spinner-2x-s8f8699dcbe.png');
+    background-size: 24px 150px;
     background-position: 0 0;
     height: 25px;
     width: 24px;
   }
 }
-/* line 78, jquery.spinner2.scss */
+/* line 81, jquery.spinner2.scss */
 .spinner .error,
 .spinner .invalid {
   background: #aa0000;

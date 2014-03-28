@@ -14,14 +14,28 @@
 			font-size: 2em;
 			font-weight: bold;
 		}
+		h2 {
+			margin: 10px;
+			font-size: 1.2em;
+			font-weight: bold;
+		}
 		pre, code {
 			font-family: monospace;
+		}
+		p {
+			margin: 16px 8px 8px;
+		}
+		sub {
+			font-size: 12px;
 		}
 		fieldset {
 			display: inline-block;
 			border: 1px solid #aaa;
 			margin: 20px;
 			vertical-align: top;
+		}
+		.example-group {
+			border: 1px solid #aaa;
 		}
 		.spinner {
 			margin: 8px 16px;
@@ -33,33 +47,76 @@
 <pre><code>
 	Usage:
 
-	Tag(s):
-		&lt;input [class="myClass"] [data-step="1"] [data-initvalue="1"] />
+	Tag(s) with default values:
+		&lt;input 
+			[class="myClass"]      // Optional class (used by selector)
+			[data-step="1"]        // Optional value of increment/decrement
+			[data-initvalue="1"]   // Optional initial value
+			[data-maxvalue="99"]   // Optional max value
+			/>
 	
 	Script:
-		$(&lt;selector>).spinner(); // Eg. tag(s) above $('.myClass')
+		$(&lt;selector>).spinner([options]);
+		// Eg. tag(s) above $('.myClass').spinner();
 
-	Optional data-attributes:
-
-		data-step="&lt;integer>"       -- Value of increment/decrement
-		data-initvalue="&lt;integer>"  -- Initial value
+	Options with default values:
+		{
+			step:       1,  // Step size
+			initvalue:  0,  // Initial value
+			minvalue:   0,  // Min value
+			maxvalue: 100,  // Max value
+			maxlength:  3,  // Max number of digits in the input box
+		}
 
 </code></pre>
-<fieldset>
-	<legend>Step Size 1</legend>
-	<input class="spinnerExample" />
-	<input class="spinnerExample" data-initvalue="25" />
-</fieldset>
-<fieldset>
-	<legend>Step Size 5</legend>
-	<input class="spinnerExample" data-step="5" />
-	<input class="spinnerExample" data-initvalue="50" data-step="5" />
-</fieldset>
+
+<div class="example-group">
+	<h2>class="spinnerExample"</h2>
+	<p>$('.spinnerExample').spinner();</p>
+	<fieldset>
+		<legend>defaults</legend>
+		<input class="spinnerExample" />
+		<p><sub>initvalue="25"</sub></p>
+		<input class="spinnerExample" data-initvalue="25" />
+		<p><sub>maxvalue="25"</sub></p>
+		<input class="spinnerExample" data-initvalue="25" data-maxvalue="25" />
+	</fieldset>
+	<fieldset>
+		<legend>step="5"</legend>
+		<input class="spinnerExample" data-step="5" />
+		<p><sub>initvalue="50"</sub></p>
+		<input class="spinnerExample" data-step="5" data-initvalue="50" />
+		<p><sub>maxvalue="50"</sub></p>
+		<input class="spinnerExample" data-step="5" data-initvalue="50" data-maxvalue="50" />
+	</fieldset>
+</div>
+
+<div class="example-group">
+	<h2>class="spinnerExample2"</h2>
+	<p>$('.spinnerExample2').spinner({
+		step: 2,
+		initvalue: 12,
+		minvalue: 4,
+		maxvalue: 16
+	});</p>
+	<fieldset>
+		<legend>defaults</legend>
+		<input class="spinnerExample2" />
+		<p><sub>maxvalue="24"</sub></p>
+		<input class="spinnerExample2" data-maxvalue="24" />
+	</fieldset>
+</div>
 
 <script type="text/javascript" src="lib/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="dist/jquery.spinner2.min.js"></script>
 <script type="text/javascript">
-	$('.spinnerExample').spinner()
+	$('.spinnerExample').spinner();
+	$('.spinnerExample2').spinner({
+		step: 2,
+		initvalue: 12,
+		minvalue: 4,
+		maxvalue: 16
+	});
 </script>
 </body>
 </html>
