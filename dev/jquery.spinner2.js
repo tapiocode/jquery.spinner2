@@ -18,7 +18,7 @@
     initvalue : 0,
     minvalue  : 0,
     maxvalue  : 100,
-    maxlength : 2
+    maxlength : 3
   };
   var keyCodes = { up: 38, down: 40 };
 
@@ -60,7 +60,7 @@
         var isInvalidValue = isInvalid(value);
         field
             .toggleClass('invalid', isInvalidValue)
-            .toggleClass('passive', !isInRange(value))
+            .toggleClass('passive', isOnBorder(value))
             .siblings('.neg')
             .attr('disabled', (value === options.minvalue ? 'disabled' : null ))
             .siblings('.pos')
@@ -81,6 +81,10 @@
 
       function isInvalid(value) {
         return isNaN(+value) || !isInRange(value);
+      }
+
+      function isOnBorder(value) {
+        return value === options.minvalue || value === options.maxvalue;
       }
 
       function isInRange(value) {

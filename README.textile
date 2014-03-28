@@ -26,7 +26,7 @@ h1. Additional Features in Version 2
 * JS-files run through jshint
 * Minified css, js for production
 * Max value
-* Configuration chain, default overrides with options object, then data-attributes
+* Override defaults with options object, then data-attributes
 
 h1. License
 
